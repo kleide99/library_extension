@@ -19,6 +19,10 @@ class LibraryBookCategory(models.Model):
     ######################
     # Fields declaration #
     ######################
+    book_id = fields.char(
+                            string="Book",
+                            required=True,)
+    
     author_id = fields.Many2one(
                             string="Name",
                             comodel_name="res.partner",
@@ -50,14 +54,18 @@ class LibraryBookCategory(models.Model):
     ##################
 
     category_obj = env['library.book.category'].create({
-        'name': 'Action',}]
+        'name': 'Action',})
     duplicate_category_obj = env['library.book.category'].create({
-        'name': 'Action',}]
+        'name': 'Action',})
     author = env['res.partner'].create({
-        'name': 'Michael Jackson',}]
-    book = env['library.book']
+        'name': 'Michael Jackson',})
+    book = env['library.book'].create({
+        'name': 'Black or White',
+        'author_id': 'author.id,
+        'category_id: '[(6,0 [category_obj.id])],})
 
     ####################
     # Business methods #
     ####################
+
 
